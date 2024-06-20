@@ -1,0 +1,80 @@
+<%-include ('partials/header.ejs', { isLoggedIn })%>
+
+<div class="container-lg add-body">
+    <% if (locals.post) { %>
+        <form action="/add" method="POST">
+            <input type="hidden" name="edit" value="edit">
+            <input type="hidden" name="author" value=<%= locals.userName %>>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="title" placeholder="title" value=<%= post[0].title %>>
+                <label for="title">Title</label>
+            </div>
+            <div class="form-floating mb-3">
+                <select class="form-select" name="category" aria-label="Floating label select example">
+                    <option>Open this select menu</option>
+                    <option value="1" <%= post[0].category === 1 ? 'selected' : '' %>>One</option>
+                    <option value="2" <%= post[0].category === 2 ? 'selected' : '' %>>Two</option>
+                    <option value="3" <%= post[0].category === 3 ? 'selected' : '' %>>Three</option>
+                </select>
+                <label for="floatingSelect">Category</label>
+            </div>
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Content" name="content" style="height: 300px"><%= post[0].content %></textarea>
+                <label for="content">Content</label>
+            </div>
+            <div class="input-group mt-3">
+                <input type="file" class="form-control" id="image">
+                <label class="input-group-text" for="inputGroupFile02">Upload</label>
+            </div>
+        </form>
+    <% } else { %>
+        <form action="/add" method="POST">
+            <input type="hidden" name="add" value="add">
+            <input type="hidden" name="author" value=<%= author %>>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="title" placeholder="title">
+                <label for="title">Title</label>
+            </div>
+            <div class="form-floating mb-3">
+                <select class="form-select" name="category" aria-label="Floating label select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                <label for="floatingSelect">Category</label>
+            </div>
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Content" name="content" style="height: 300px"></textarea>
+                <label for="content">Content</label>
+            </div>
+            <div class="input-group mt-3">
+                <input type="file" class="form-control" id="image">
+                <label class="input-group-text" for="inputGroupFile02">Upload</label>
+            </div>
+        </form>
+    <% } %>
+        <div class="add-btn-container">
+            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addPost" type="button">Submit</button>
+        </div>
+
+        <div class="modal fade" id="addPost" tabindex="-1" aria-labelledby="addPost" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Post</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-dark">Comfirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+<%-include ('partials/footer.ejs')%>

@@ -1,0 +1,40 @@
+<%-include ('partials/header.ejs', { isLoggedIn })%>
+
+    <div class="container-lg login-register-body">
+        <div class="row" style="justify-content: center;">
+            <div class="card col-md-4">
+                <div class="card-body register-form-container">
+                    <h5 class="card-title mt-3" style="text-align: center; font-size: x-large;">Register</h5>
+                    <form action="/signUp" method="POST" style="max-width: 90%; width: 90%;">
+                        <div class="mt-5">
+                            <label for="userName" class="form-label">User Name</label>
+                            <input type="text" class="form-control" name="userName" autocomplete="off">
+                        </div>
+                        <div class="mt-3">
+                            <label for="password1" class="form-label">Password</label>
+                            <input type="password" class="form-control" name="password1" placeholder="Length should be 8 or more">
+                        </div>
+                        <div class="mt-3">
+                            <label for="password2" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" name="password2" placeholder="Length should be 8 or more">
+                        </div>
+                        <!-- <div class="mt-3">
+                            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                        </div> -->
+                        <div class="mt-5 mb-3" style="text-align: right;">
+                            <button type="submit" class="btn btn-dark">OK</button>
+                            <!-- <button type="submit" class="btn btn-dark"><a href="#" class="card-link" style="color: white;">OK</a></button> -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+<%- include('partials/footer.ejs') %>

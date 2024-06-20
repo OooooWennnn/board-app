@@ -1,0 +1,51 @@
+<%-include ('partials/header.ejs', { isLoggedIn })%>
+
+    <div class="container-lg board-body">
+        <% if (!posts) { %>
+            <h5><%= message %></h5>
+        <% } else if (posts.length == 0) { %>
+            <h5>No post found</h5>
+        <% } else {%>
+            <% for(let i = 0; i < posts.length; i++ ) { %>
+                <div class="row board-item">
+                    <!-- <h5 class="col-8"><a data-bs-toggle="collapse" href="/board?id=<%= posts[i].id %>"><%= posts[i].title %></a></h5> -->
+                    <h5 class="col-8"><a data-bs-toggle="collapse" role="button" href="#content<%= i %>" aria-expanded="false" aria-controls="content"><%= posts[i].title %></a></h5>
+                    <p class="col-2"><a href="/board?date=<%= posts[i].postDate %>"><%= posts[i].postDate %></a></p>
+                    <p class="col-2"><a href="/board?author=<%= posts[i].author %>"><%= posts[i].author %></a></p>
+                    <div class="collapse" id="content<%= i %>">
+                        <div class="collapse-content-body pt-1 pb-3">
+                            <a href="/board/<%= posts[i]._id %>"><%= posts[i].content %></a>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        <% } %>
+
+        <div class="pagination-add-button-container">
+            <form class="add-btn-container" action="/add" method="GET">
+                <button class="btn btn-dark add-btn" type="submit">Add</button>
+            </form>
+            <form action="/board" method="GET">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item">
+                        <button class="page-link" style="color: black" name="page" value=<%= page - 1 %> aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </button>
+                        </li>
+                        <!-- <li class="page-item"><a class="page-link" style="color: black" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" style="color: black" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" style="color: black" href="#">3</a></li> -->
+                        <li class="page-item">
+                        <button class="page-link" style="color: black" name="page" value=<%= page + 1 %> aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </button>
+                        </li>
+                    </ul>
+                </nav>
+            </form>    
+        </div>
+    </div>
+
+
+<%-include ('partials/footer.ejs')%>

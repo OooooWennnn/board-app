@@ -1,0 +1,45 @@
+<%-include ('partials/header.ejs', { isLoggedIn })%>
+
+    <div class="container-lg board-body">
+        <% if (!post) { %>
+            <h5><%= message %></h5>
+        <% } else {%>
+            <form action="/board/<%= post[0]._id %>" method="GET">
+                <div class="post-title-box">
+                    <h2><%= post[0].title %></h2>
+                    <div>
+                        <h5 class="pe-3" style="margin: 0;"><%= post[0].author %></h5>
+                        <p style="margin: 0;"><%= post[0].postDate %></p>
+                    </div>
+                </div>
+                <hr>
+                <p><%= post[0].content %></p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-dark" type="submit" name="edit" value="true">Edit</button>
+                    <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#deletePost" type="button">Delete</button>
+                </div>
+            </form>
+            
+            <div class="modal fade" id="deletePost" tabindex="-1" aria-labelledby="deletePost" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Post</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-dark">Comfirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+
+    </div>
+
+
+<%-include ('partials/footer.ejs')%>

@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "category": 1,
+    "postDate": "2023-09-19",
+    "lastUpdated": "2023-09-19",
+    "title": "helloooo",
+    "author": "Sumin Han",
+    "content": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam, a. Possimus reprehenderit distinctio vitae, placeat, commodi corporis officia magni perspiciatis hic laudantium in culpa dignissimos nisi consectetur eum voluptas modi."
+  },
+  {
+    "id": 2,
+    "category": 2,
+    "postDate": "2023-09-19",
+    "lastUpdated": "2023-09-19",
+    "title": "byeeee",
+    "author": "Sangwoo Shin",
+    "content": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam, a. Possimus reprehenderit distinctio vitae, placeat, commodi corporis officia magni perspiciatis hic laudantium in culpa dignissimos nisi consectetur eum voluptas modi."
+  }
+]
